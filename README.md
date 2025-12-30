@@ -121,3 +121,7 @@ numerical-decision-threshold-analysis/
 ## License
 
 MIT License. See the `LICENSE` file for details.
+
+## Notes
+
+This project was developed earlier and maintained locally before being published here as part of a curated public portfolio.
