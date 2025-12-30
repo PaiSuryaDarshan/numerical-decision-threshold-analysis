@@ -30,7 +30,7 @@ python -m pip install -e .
 ### Install directly from GitHub
 
 ```bash
-pip install git+https://github.com/PaiSuryaDarshan/Numerical-Decision-Threshold-Analyzer.git
+pip install git+https://github.com/PaiSuryaDarshan/numerical-decision-threshold-analysis.git
 ```
 
 ## Quick start
