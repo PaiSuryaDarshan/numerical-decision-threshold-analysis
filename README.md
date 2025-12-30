@@ -1,0 +1,118 @@
+# Numerical Decision Threshold Analyzer
+
+
+A small Python utility for **post-hoc analysis of binary decision thresholds**.
+
+It connects score thresholding with confusion-matrix counts and common evaluation metrics, allowing inspection of how classification performance changes as the decision threshold varies.
+
+
+
+## Scope
+
+This project is intentionally narrow.
+
+It does **not**:
+
+*   Train models
+*   Optimize thresholds
+*   Perform inference
+*   Include visualization or plotting
+
+It assumes continuous scores and ground-truth labels already exist and focuses exclusively on **post-hoc evaluation of threshold-based decisions**.
+
+
+## Installation
+
+### Local development (editable install)
+
+From the repository root:
+
+```bash
+python -m pip install -e .
+```
+
+### Install directly from GitHub
+
+```bash
+pip install git+https://github.com/PaiSuryaDarshan/Numerical-Decision-Threshold-Analyzer.git
+```
+
+
+
+## Quick start
+
+Evaluate a single threshold and then compare multiple thresholds.
+
+```python
+from ndt.core import analyze_threshold, sweep_thresholds
+
+scores = [0.12, 0.43, 0.55, 0.78, 0.91]
+y_true = [0, 0, 1, 1, 1]
+
+result = analyze_threshold(scores, y_true, threshold=0.5)
+print(result.counts)
+print(result.metrics)
+
+results = sweep_thresholds(scores, y_true, thresholds=[0.3, 0.5, 0.7])
+for r in results:
+    print(
+        f"threshold={r.threshold:.2f} | "
+        f"accuracy={r.metrics['accuracy']:.2f} | "
+        f"precision={r.metrics['precision']:.2f} | "
+        f"recall={r.metrics['recall']:.2f}"
+    )
+```
+
+Example output:
+
+```text
+ConfusionCounts(tp=3, fp=0, tn=2, fn=0)
+
+threshold=0.30 | accuracy=0.80 | precision=0.75 | recall=1.00
+threshold=0.50 | accuracy=1.00 | precision=1.00 | recall=1.00
+threshold=0.70 | accuracy=0.80 | precision=1.00 | recall=0.67
+```
+
+This illustrates the typical **precision–recall trade-off** as the decision threshold changes.
+
+
+## Examples
+
+Runnable examples are provided in the `examples/` directory:
+
+*   `simple_threshold_analysis.py`  
+    Readable console output for single-threshold analysis and threshold sweeps
+*   `compare_thresholds.py`  
+    Programmatic comparison of metrics across thresholds
+
+Run an example from the repository root:
+
+```bash
+python examples/simple_threshold_analysis.py
+```
+
+
+## Tests
+
+Run the test suite from the repository root:
+
+```bash
+pytest
+```
+
+
+## Project structure
+
+```text
+ndt/
+├── thresholds.py   # Applies thresholds to continuous scores
+├── metrics.py      # Confusion-matrix counts and derived metrics
+├── core.py         # Wiring layer connecting decisions to evaluation
+tests/
+examples/
+```
+
+
+## License
+
+MIT License. See the `LICENSE` file for details.
