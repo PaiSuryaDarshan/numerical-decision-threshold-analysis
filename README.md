@@ -1,11 +1,8 @@
 # Numerical Decision Threshold Analyzer
 
-
 A small Python utility for **post-hoc analysis of binary decision thresholds**.
 
 It connects score thresholding with confusion-matrix counts and common evaluation metrics, allowing inspection of how classification performance changes as the decision threshold varies.
-
-
 
 ## Scope
 
@@ -13,13 +10,12 @@ This project is intentionally narrow.
 
 It does **not**:
 
-*   Train models
-*   Optimize thresholds
-*   Perform inference
-*   Include visualization or plotting
+- Train models
+- Optimize thresholds
+- Perform inference
+- Include visualization or plotting
 
 It assumes continuous scores and ground-truth labels already exist and focuses exclusively on **post-hoc evaluation of threshold-based decisions**.
-
 
 ## Installation
 
@@ -36,8 +32,6 @@ python -m pip install -e .
 ```bash
 pip install git+https://github.com/PaiSuryaDarshan/Numerical-Decision-Threshold-Analyzer.git
 ```
-
-
 
 ## Quick start
 
@@ -75,22 +69,20 @@ threshold=0.70 | accuracy=0.80 | precision=1.00 | recall=0.67
 
 This illustrates the typical **precision–recall trade-off** as the decision threshold changes.
 
-
 ## Examples
 
 Runnable examples are provided in the `examples/` directory:
 
-*   `simple_threshold_analysis.py`  
-    Readable console output for single-threshold analysis and threshold sweeps
-*   `compare_thresholds.py`  
-    Programmatic comparison of metrics across thresholds
+- `simple_threshold_analysis.py`  
+  Readable console output for single-threshold analysis and threshold sweeps
+- `compare_thresholds.py`  
+  Programmatic comparison of metrics across thresholds
 
 Run an example from the repository root:
 
 ```bash
 python examples/simple_threshold_analysis.py
 ```
-
 
 ## Tests
 
@@ -100,18 +92,31 @@ Run the test suite from the repository root:
 pytest
 ```
 
-
 ## Project structure
 
 ```text
-ndt/
-├── thresholds.py   # Applies thresholds to continuous scores
-├── metrics.py      # Confusion-matrix counts and derived metrics
-├── core.py         # Wiring layer connecting decisions to evaluation
-tests/
-examples/
+numerical-decision-threshold-analysis/
+├── src/
+│   └── ndt/
+│       ├── __init__.py
+│       ├── core.py
+│       ├── metrics.py
+│       └── thresholds.py
+├── tests/
+│   ├── test_core.py
+│   ├── test_metrics.py
+│   └── test_thresholds.py
+├── examples/
+│   ├── simple_threshold_analysis.py
+│   └── compare_thresholds.py
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── .gitignore
+├── LICENSE
+├── pyproject.toml
+└── README.md
 ```
-
 
 ## License
 

@@ -5,14 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ndt"
 version = "0.1.0"
-description = "Utilities for post-hoc analysis of binary decision thresholds."
+description = "Post-hoc analysis of binary decision thresholds"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [
-    { name = "Your Name" }
-]
+authors = [{ name = "PaiSuryaDarshan", email = "pai@paisuryadarshan.me" }]
+
 dependencies = []
 
 [tool.setuptools]
-packages = ["ndt"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
