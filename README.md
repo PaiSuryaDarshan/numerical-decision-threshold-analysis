@@ -6,7 +6,7 @@ It connects score thresholding with confusion-matrix counts and common evaluatio
 
 ## Scope
 
-This project is intentionally narrow.
+This project is intentionally narrow..
 
 It does **not**:
 
